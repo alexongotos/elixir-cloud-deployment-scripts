@@ -2,7 +2,9 @@ These are Terraform and Packer files for building elixir environments on Digital
 Packer is used to build an elixir base image that can be used as a custom image stored on Digitaloceon to build immutable environments with terraform.
 
 The following Digitaloceon How-To's were used as guides.
+
 https://www.digitalocean.com/community/tutorials/how-to-use-terraform-with-digitalocean#describe-haproxy-server
+
 https://www.digitalocean.com/community/tutorials/how-to-create-digitalocean-snapshots-using-packer-on-ubuntu-16-04
 
 These scripts fix some gotcha's in the How-To's
