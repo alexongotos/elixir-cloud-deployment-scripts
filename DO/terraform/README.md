@@ -52,7 +52,9 @@ Add Terraform Path to your Profile
 
 Create a separate terminal window or tab to run your packer scripts.
 
-git clone this repo
+```
+git clone https://github.com/elay12/elixir-cloud-deployment-scripts.git
+```
 
 ```
     cd $HOME/elixir-cloud-deployment-scripts/DO/packer
@@ -73,7 +75,7 @@ Build the image on Digitaloceon.
 ```
 
 In your Digitaloceon browser window this will create a temporary droplet, install elixir, save the image to the snapshots folder and finally delete the temporary droplet.
-On your laptop make a note of the image ID number at the end of the packer build log printed to your terminal screen. shown below in last line in brackets.
+On your laptop make a note of the image ID number at the end of the packer build log printed to your terminal screen shown below in the last line in brackets.
 This is required by the terraform scripts.
 
 ```
@@ -95,6 +97,7 @@ Create a separate terminal window or tab to run your terraform scripts.
 ```
     cd $HOME/elixir-cloud-deployment-scripts/DO/terraform
 ```
+Edit both the www-1.tf and www-2.tf files and Add your packer image ID to both against the image tag.
 
 ```
     Terraform init
