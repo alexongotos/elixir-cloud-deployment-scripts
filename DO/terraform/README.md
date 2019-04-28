@@ -7,7 +7,7 @@ https://www.digitalocean.com/community/tutorials/how-to-create-digitalocean-snap
 
 These scripts fix some gotcha's in the How-To's
 
-Steps
+# Prerequisite Steps
 On MacOS and Linux setup laptop
 Read instructions in Digitaloceon terraform HOWTO's above to setup your environment variables on your laptop,(Sections 1,2 and 3),then follow these steps.
 
@@ -40,7 +40,7 @@ packer -v
 
 
 
-BUILD your elixir image with Packer
+# BUILD your elixir image with Packer
 
 Create a separate terminal window or tab to run your packer scripts.
 
@@ -69,7 +69,7 @@ Build 'digitalocean' finished.
 ==> Builds finished. The artifacts of successful builds are:
 --> digitalocean: A snapshot was created: 'packer-1556378636' (ID: 46457057) in regions 'nyc1'
 
-Build your environment with terraform
+# Build your environment with terraform
 
 Create a separate terminal window or tab to run your terraform scripts
 
