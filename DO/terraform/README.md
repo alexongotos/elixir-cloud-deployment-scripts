@@ -1,4 +1,4 @@
-These are Terraform and Packer files for building elixir environments on Digtaloceon.
+These are Terraform and Packer files for building elixir environments on Digitaloceon.
 Packer is used to build an elixir base image that can be used as a custom image stored on Digitaloceon to build immutable environments with terraform.
 
 The following Digitaloceon How-To's were used as guides.
