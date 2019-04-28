@@ -19,8 +19,8 @@ Setup ssh connection to DigitalOceon.
 
 Export your DigitalOcean API Token (DO_PAT)
     ```
-    $ export DO_PAT=ADD_YOUR_DIGITALOCEON_API_TOKEN_HERE
-    $ echo $DO_PAT
+    export DO_PAT=ADD_YOUR_DIGITALOCEON_API_TOKEN_HERE
+    echo $DO_PAT
     ```
 
 Export your ssh fingerprint:
