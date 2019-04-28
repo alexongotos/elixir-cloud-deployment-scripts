@@ -46,6 +46,7 @@ Create a separate terminal window or tab to run your packer scripts.
 
 git clone this repo
 cd $HOME/elixir-cloud-deployment-scripts/DO/packer
+Edit packer-elixir-base.json and paste your $DO_PAT string into this line "api_token": "PASTE_YOUR_DIGITALOCEON_API_TOKEN_HERE",
 
 Check the packer file validates
 
