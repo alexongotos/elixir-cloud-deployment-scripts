@@ -26,18 +26,23 @@ Export your DigitalOcean API Token (DO_PAT):
 
 Export your ssh fingerprint:
 
-export ssh_fingerprint=$(ssh-keygen -E md5 -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
-echo $ssh_fingerprint 
-echo $HOME
+```
+    export ssh_fingerprint=$(ssh-keygen -E md5 -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
+    echo $ssh_fingerprint 
+    echo $HOME
+```
 
 
 Install terraform and packer using ASDF or use the instructions from the links above.
 
 Check terraform versions.
-terraform -v
-packer -v
 
-3. Add Terraform Path to your Profile
+```
+    terraform -v
+    packer -v
+```
+
+Add Terraform Path to your Profile
 
 
 
@@ -48,48 +53,72 @@ packer -v
 Create a separate terminal window or tab to run your packer scripts.
 
 git clone this repo
-cd $HOME/elixir-cloud-deployment-scripts/DO/packer
+
+```
+    cd $HOME/elixir-cloud-deployment-scripts/DO/packer
+```
+
 Edit packer-elixir-base.json and paste your $DO_PAT string into this line "api_token": "PASTE_YOUR_DIGITALOCEON_API_TOKEN_HERE",
 
-Check the packer file validates
+Check the packer file validates.
 
-packer validate packer-elixir-base.json
+```
+    packer validate packer-elixir-base.json
+```
 
-Build the image on Digitaloceon
-packer build packer-elixir-base.json
+Build the image on Digitaloceon.
+
+```
+    packer build packer-elixir-base.json
+```
 
 In your Digitaloceon browser window this will create a temporary droplet, install elixir, save the image to the snapshots folder and finally delete the temporary droplet.
 On your laptop make a note of the image ID number at the end of the packer build log printed to your terminal screen. shown below in last line in brackets.
 This is required by the terraform scripts.
 
-==> digitalocean: Gracefully shutting down droplet...
-==> digitalocean: Creating snapshot: packer-1556378636
-==> digitalocean: Waiting for snapshot to complete...
-==> digitalocean: Destroying droplet...
-==> digitalocean: Deleting temporary ssh key...
-Build 'digitalocean' finished.
+```
+    ==> digitalocean: Gracefully shutting down droplet...
+    ==> digitalocean: Creating snapshot: packer-1556378636
+    ==> digitalocean: Waiting for snapshot to complete...
+    ==> digitalocean: Destroying droplet...
+    ==> digitalocean: Deleting temporary ssh key...
+    Build 'digitalocean' finished.
 
-==> Builds finished. The artifacts of successful builds are:
---> digitalocean: A snapshot was created: 'packer-1556378636' (ID: 46457057) in regions 'nyc1'
+    ==> Builds finished. The artifacts of successful builds are:
+    --> digitalocean: A snapshot was created: 'packer-1556378636' (ID: 46457057) in regions 'nyc1'
+```    
 
 # Build your environment with terraform
 
-Create a separate terminal window or tab to run your terraform scripts
+Create a separate terminal window or tab to run your terraform scripts.
 
-cd $HOME/elixir-cloud-deployment-scripts/DO/terraform
+```
+    cd $HOME/elixir-cloud-deployment-scripts/DO/terraform
+```
 
-Terraform init
+```
+    Terraform init
+```
 
 Check Terraform plan - this prints out your server plan for checking.
-terraform plan -var "do_token=${DO_PAT}" -var "pub_key=$HOME/.ssh/id_rsa.pub" -var "pvt_key=$HOME/.ssh/id_rsa" -var "ssh_fingerprint=ADD_YOUR_SSH_FINGERPRINT_HERE"
+
+```
+    terraform plan -var "do_token=${DO_PAT}" -var "pub_key=$HOME/.ssh/id_rsa.pub" -var "pvt_key=$HOME/.ssh/id_rsa" -var "ssh_fingerprint=ADD_YOUR_SSH_FINGERPRINT_HERE"
+```
 
 Apply Terraform plan - this will build your servers on DigitalOceon.
-terraform apply -var "do_token=${DO_PAT}" -var "pub_key=$HOME/.ssh/id_rsa.pub" -var "pvt_key=$HOME/.ssh/id_rsa" -var "ssh_fingerprint=ADD_YOUR_SSH_FINGERPRINT_HERE"
+
+```
+    terraform apply -var "do_token=${DO_PAT}" -var "pub_key=$HOME/.ssh/id_rsa.pub" -var "pvt_key=$HOME/.ssh/id_rsa" -var "ssh_fingerprint=ADD_YOUR_SSH_FINGERPRINT_HERE"
+```
 
 View the apply process in your Digitaloceon browser.
 
 Destroy Terraform plan - this will destroy your environment on Digitaloceon.
-terraform plan -destroy -out=terraform.tfplan   -var "do_token=${DO_PAT}"   -var "pub_key=$HOME/.ssh/id_rsa.pub"   -var "pvt_key=$HOME/.ssh/id_rsa"   -var "ssh_fingerprint=$ssh_fingerprint"
+
+```
+    terraform plan -destroy -out=terraform.tfplan   -var "do_token=${DO_PAT}"   -var "pub_key=$HOME/.ssh/id_rsa.pub"   -var "pvt_key=$HOME/.ssh/id_rsa"   -var "ssh_fingerprint=$ssh_fingerprint"
+```
 
 View the destroy process in your Digitaloceon browser.
 
