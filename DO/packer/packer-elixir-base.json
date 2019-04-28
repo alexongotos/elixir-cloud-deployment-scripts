@@ -1,0 +1,29 @@
+{
+    "builders": [
+        {
+            "type": "digitalocean",
+            "ssh_username": "root",
+            "api_token": "570fe7fa855e77496dc9e88599f0faf9254e44e920671e0482e37061fc7be851",
+            "image": "ubuntu-16-04-x64",
+            "region": "nyc1",
+            "size": "512mb"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sleep 30",
+                "sudo apt-get update",
+                "apt-get update && apt-get install -y curl locales",
+                "sudo apt-get update && sudo apt-get -y upgrade",
+                "sudo apt-get -y install wget htop",
+                "sudo apt-get -y install nginx",
+                "sudo apt-get -y update && sudo apt-get -y upgrade",
+                "sudo wget --quiet https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb",
+                "sudo apt-get -y update",
+                "sudo apt-get -y install git esl-erlang elixir"
+            ]
+        }
+    ]
+}

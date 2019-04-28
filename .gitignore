@@ -1,3 +1,4 @@
+# TERRAFORM
 #  Local .terraform directories
 **/.terraform/*
 
@@ -7,3 +8,36 @@
 
 # .tfvars files
 *.tfvars
+
+*.dll
+*.exe
+.DS_Store
+example.tf
+terraform.tfplan
+terraform.tfstate
+bin/
+modules-dev/
+pkg/
+vendor/
+website/.vagrant
+website/build
+website/node_modules
+.vagrant/
+*.backup
+./*.tfstate
+.terraform/
+*.log
+*.bak
+*~
+.*.swp
+.idea
+
+
+# PACKER
+variables.json
+vendor/cookbooks
+Berksfile.lock
+Gemfile.lock
+.vagrant
+
+# ANSIBLE
