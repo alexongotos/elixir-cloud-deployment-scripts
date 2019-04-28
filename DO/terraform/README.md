@@ -18,21 +18,21 @@ Open a terminal window or tab to setup your local environment.
 Setup ssh connection to DigitalOceon.
 
 Export your DigitalOcean API Token (DO_PAT)
-export DO_PAT=ADD_YOUR_DIGITALOCEON_API_TOKEN_HERE
-echo $DO_PAT
+$ export DO_PAT=ADD_YOUR_DIGITALOCEON_API_TOKEN_HERE
+$ echo $DO_PAT
 
 Export your ssh fingerprint:
 
-export ssh_fingerprint=$(ssh-keygen -E md5 -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
-echo $ssh_fingerprint 
-echo $HOME
+$ export ssh_fingerprint=$(ssh-keygen -E md5 -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
+$ echo $ssh_fingerprint 
+$ echo $HOME
 
 
 Install terraform and packer using ASDF or use the instructions from the links above.
 
 Check terraform versions.
-terraform -v
-packer -v
+$ terraform -v
+$ packer -v
 
 3. Add Terraform Path to your Profile
 
@@ -45,7 +45,7 @@ packer -v
 Create a separate terminal window or tab to run your packer scripts.
 
 git clone this repo
-cd $HOME/elixir-cloud-deployment-scripts/DO/packer
+$ cd $HOME/elixir-cloud-deployment-scripts/DO/packer
 Edit packer-elixir-base.json and paste your $DO_PAT string into this line "api_token": "PASTE_YOUR_DIGITALOCEON_API_TOKEN_HERE",
 
 Check the packer file validates
@@ -90,4 +90,4 @@ terraform plan -destroy -out=terraform.tfplan   -var "do_token=${DO_PAT}"   -var
 
 View the destroy process in your Digitaloceon browser.
 
-You should now have both packer and terraform ble to set up a a basic 3 node elixir environment.
+You should now have both packer and terraform scripts able to set up a basic 3 node elixir environment with a prebuilt elixir image.
