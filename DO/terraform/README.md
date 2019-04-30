@@ -1,3 +1,5 @@
+# DigitalOceon Build
+
 These are Terraform and Packer files for building elixir environments on Digitaloceon.
 Packer is used to build an elixir base image that can be used as a custom image stored on Digitaloceon to build immutable environments with terraform.
 
@@ -123,8 +125,53 @@ Destroy Terraform plan - this will destroy your environment on Digitaloceon.
 
 ```
     terraform plan -destroy -out=terraform.tfplan   -var "do_token=${DO_PAT}"   -var "pub_key=$HOME/.ssh/id_rsa.pub"   -var "pvt_key=$HOME/.ssh/id_rsa"   -var "ssh_fingerprint=$ssh_fingerprint"
-```
 
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+
+digitalocean_droplet.www-2: Refreshing state... (ID: 141730375)
+digitalocean_droplet.www-1: Refreshing state... (ID: 141730374)
+digitalocean_droplet.haproxy-www: Refreshing state... (ID: 141731344)
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  - digitalocean_droplet.haproxy-www
+
+  - digitalocean_droplet.www-1
+
+  - digitalocean_droplet.www-2
+
+
+Plan: 0 to add, 0 to change, 3 to destroy.
+
+------------------------------------------------------------------------
+
+This plan was saved to: terraform.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "terraform.tfplan"
+
+    $ terraform apply "terraform.tfplan"
+digitalocean_droplet.haproxy-www: Destroying... (ID: 141731344)
+digitalocean_droplet.haproxy-www: Still destroying... (ID: 141731344, 10s elapsed)
+digitalocean_droplet.haproxy-www: Destruction complete after 13s
+digitalocean_droplet.www-2: Destroying... (ID: 141730375)
+digitalocean_droplet.www-1: Destroying... (ID: 141730374)
+digitalocean_droplet.www-1: Still destroying... (ID: 141730374, 10s elapsed)
+digitalocean_droplet.www-2: Still destroying... (ID: 141730375, 10s elapsed)
+digitalocean_droplet.www-1: Destruction complete after 11s
+digitalocean_droplet.www-2: Destruction complete after 13s
+
+Apply complete! Resources: 0 added, 0 changed, 3 destroyed.
+
+```
 View the destroy process in your Digitaloceon browser.
 
 You should now have both packer and terraform scripts able to set up a basic 3 node elixir environment with a prebuilt elixir image.
