@@ -27,6 +27,11 @@ $ ssh root@<add-server-IP>
 git clone https://github.com/elay12/elixir-cloud-deployment-scripts.git  down to your laptop
 cd elixir-cloud-deployment-scripts/Hetzner/packer/
 ```
+edit packer-hetzner.json and add your Hetzner API key to this line
+```
+ "token": "add-your-Hetzner-API-key",
+
+```
 test with 
 ```
 $ packer validate packer-hetzner.json
