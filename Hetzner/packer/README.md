@@ -1,10 +1,15 @@
-Packer json file to build an elixir image on Hetzner hcloud
+## Packer json file to build an elixir image on Hetzner hcloud ##
 
 Create an account with Hetzner
+
 Add your ssh key
+
 Create an API key 
+
 (select Access/API tokens)
+
 Test by creating an Ubuntu 16.04 server 
+
 select Add Server
 
 ssh in from your terminal
