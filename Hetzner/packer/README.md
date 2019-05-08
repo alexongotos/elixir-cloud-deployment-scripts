@@ -1,7 +1,5 @@
 ## Packer json file to build an elixir image on Hetzner hcloud ##
 
-
-
 install packer on your laptop 
 https://www.packer.io/intro/getting-started/install.html
 
@@ -21,13 +19,20 @@ Test by creating an Ubuntu 16.04 server.
 
 Select Add Server.
 
-ssh in from your terminal
+Test ssh access to Hetzner from your laptop.
+
 ```
 $ ssh root@<add-server-IP>
+```
+Destroy test server.
+
+## Run packer from your laptop ##
+```
 git clone https://github.com/elay12/elixir-cloud-deployment-scripts.git  down to your laptop
+
 cd elixir-cloud-deployment-scripts/Hetzner/packer/
 ```
-edit packer-hetzner.json and add your Hetzner API key to this line
+Edit packer-hetzner.json and add your Hetzner API key to this line
 ```
  "token": "add-your-Hetzner-API-key",
 
