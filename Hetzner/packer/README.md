@@ -22,10 +22,10 @@ Test by creating an Ubuntu 16.04 server.
 Select Add Server.
 
 ssh in from your terminal
-
-clone packer-hetzner.json
 ```
 $ ssh root@<add-server-IP>
+git clone https://github.com/elay12/elixir-cloud-deployment-scripts.git  down to your laptop
+cd elixir-cloud-deployment-scripts/Hetzner/packer/
 ```
 test with 
 ```
