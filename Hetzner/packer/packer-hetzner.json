@@ -1,0 +1,29 @@
+{
+    "builders": [
+        {
+            "type": "hcloud",
+            "ssh_username": "root",
+            "token": "add-your-Hetzner-API-key",
+            "image": "ubuntu-16.04",
+            "location": "nbg1",
+            "server_type": "cx11"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sleep 30",
+                "sudo apt-get update",
+                "apt-get update && apt-get install -y curl locales",
+                "sudo apt-get update && sudo apt-get -y upgrade",
+                "sudo apt-get -y install wget htop",
+                "sudo apt-get -y install nginx",
+                "sudo apt-get -y update && sudo apt-get -y upgrade",
+                "sudo wget --quiet https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb",
+                "sudo apt-get -y update",
+                "sudo apt-get -y install git esl-erlang elixir"
+            ]
+        }
+    ]
+}
