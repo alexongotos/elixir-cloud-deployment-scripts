@@ -1,5 +1,5 @@
-##Packer json file to build an elixir image on Hetzner hcloud
-##Test ssh access from your laptop to Hetzner cloud
+##Packer json file to build an elixir image on Hetzner hcloud##
+##Test ssh access from your laptop to Hetzner cloud##
 
 Install packer on your laptop 
 https://www.packer.io/intro/getting-started/install.html
@@ -27,7 +27,7 @@ $ ssh root@<add-server-IP>
 ```
 Destroy test server.
 
-##Run packer on your laptop
+##Run packer on your laptop##
 ```
 git clone https://github.com/elay12/elixir-cloud-deployment-scripts.git down to your laptop
 
